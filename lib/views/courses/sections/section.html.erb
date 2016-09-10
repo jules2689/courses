@@ -1,0 +1,28 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-title"><%= course.title %> - <%= section.title %></h1>
+    <p><%= section.description %></p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
+  </div>
+</div>
+
+<div class="container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Courses</a></li>
+    <li class="breadcrumb-item"><a href="<%= course.link %>"><%= course.title %></a></li>
+    <li class="breadcrumb-item active"><%= section.title %></li>
+  </ol>
+
+  <% section.works.each do |work| %>
+    <div class="col-md-4 col-sm-6">
+      <div class="card">
+        <img class="card-img-top" style="width: 100%" src="https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder.png" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title"><%= work.title %></h4>
+          <p class="card-text"><%= work.description %></p>
+          <a href="<%= work.link %>" class="btn btn-primary" target="_blank">View this work</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

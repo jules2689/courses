@@ -1,0 +1,82 @@
+categories:
+  - logic
+  - math
+  - programming
+  - software design
+  - databases
+  - operating systems
+  - artificial intelligence
+  - data
+  - computer science
+
+courses:
+  - 
+    code: mat_dis
+    title: Discrete Mathematics
+    pre_reqs: []
+    description: TODO
+    categories:
+      - logic
+      - math
+    difficulty: beginner
+    sections:
+      - 
+        title: section 1
+        description: TODO
+        works:
+          - 
+            title: work1
+            description: todo
+            link: /
+          - 
+            title: work1
+            description: todo
+            link: /
+      - 
+        title: section 2
+        description: TODO
+        works:
+          - 
+            title: work1
+            description: todo
+            link: /
+          - 
+            title: work1
+            description: todo
+            link: /
+      - 
+        title: section 3
+        description: TODO
+        works:
+          - 
+            title: work1
+            description: todo
+            link: /
+          - 
+            title: work1
+            description: todo
+            link: /
+      - 
+        title: section 4
+        description: TODO
+        works:
+          - 
+            title: work1
+            description: todo
+            link: /
+          - 
+            title: work1
+            description: todo
+            link: /
+      - 
+        title: section 5
+        description: TODO
+        works:
+          - 
+            title: work1
+            description: todo
+            link: /
+          - 
+            title: work1
+            description: todo
+            link: /

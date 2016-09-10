@@ -1,0 +1,27 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-title"><%= course.title %></h1>
+    <p><%= course.description %></p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
+  </div>
+</div>
+
+<div class="container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Courses</a></li>
+    <li class="breadcrumb-item active"><%= course.title %></li>
+  </ol>
+
+  <% course.sections.each do |section| %>
+    <div class="col-md-4 col-sm-6">
+      <div class="card">
+        <img class="card-img-top" style="width: 100%" src="https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder.png" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title"><%= section.title %></h4>
+          <p class="card-text"><%= section.description %></p>
+          <a href="<%= section.link %>" class="btn btn-primary">Start this section</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
