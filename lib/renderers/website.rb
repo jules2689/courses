@@ -2,7 +2,7 @@ require_relative 'courses_renderer'
 require 'fileutils'
 
 class Website
-  WEBSITE_DIR = File.expand_path('../../../website', __FILE__)
+  WEBSITE_DIR = File.expand_path('../../../docs', __FILE__)
 
   class << self
     def render
