@@ -1,26 +1,34 @@
 require_relative 'courses'
 require_relative 'helpers/files'
 require 'fileutils'
+require 'logger'
 
 module Renderers
   class Website
-    WEBSITE_DIR = File.expand_path('../../../docs', __FILE__)
+    BASE_DIR = File.expand_path('../../../', __FILE__)
+    WEBSITE_DIR = File.join(BASE_DIR, 'docs')
 
     class << self
       def render
         clean_website_dir
-        templates_to_render = templates.reject do |_, f|
-          # Don't render partials
-          File.basename(f[:template_file], '.html.erb').start_with?('_')
-        end
-        templates_to_render.each { |_, template| render_website_template(template) }
+        templates.each { |_, template| render_website_template(template) }
         copy_assets
       end
 
       private
 
+      def clean_website_dir
+        Dir["#{WEBSITE_DIR}/*"].each do |file|
+          next if file.end_with?('docs/CNAME')
+          FileUtils.rm_rf(file, secure: true)
+        end
+      end
+
       def render_website_template(template)
-        puts "Rendering #{template[:type]}: #{template[:template_file]} to #{template[:output_path]}"
+        return if File.basename(template[:template_file], '.html.erb').start_with?('_') # Don't render a partial
+
+        logger.info "[RENDER] #{template[:type]}: #{template[:template_file].gsub(/#{BASE_DIR}/, '')}"\
+                    " => #{template[:output_path].gsub(/#{BASE_DIR}/, '')}"
         content = case template[:type]
         when :category
           courses_renderer.render_category(template[:category], template[:template_file])
@@ -39,17 +47,10 @@ module Renderers
         File.write(output_path, file_content)
       end
 
-      def clean_website_dir
-        Dir["#{WEBSITE_DIR}/*"].each do |file|
-          next if file.end_with?('docs/CNAME')
-          FileUtils.rm_rf(file, secure: true)
-        end
-      end
-
       def copy_assets
         assets_path = File.expand_path('../../assets', __FILE__)
         output_path = File.expand_path('../../../docs/assets', __FILE__)
-        puts "Copying assets from #{assets_path} to #{output_path}"
+        logger.info "[ASSETS]: Copy #{assets_path} to #{output_path}"
         FileUtils.cp_r(assets_path, output_path)
       end
 
@@ -73,6 +74,18 @@ module Renderers
 
       def categories
         @categories ||= courses.each_with_object([]) { |c, l| l << c.categories }.flatten
+      end
+
+      def logger
+        @logger ||= begin
+          logger = Logger.new(STDOUT)
+          logger.datetime_format = '%Y-%m-%d %H:%M:%S'
+          logger.formatter = proc do |severity, datetime, _progname, msg|
+            "\x1b[34m(#{severity}, #{datetime}):\x1b[0m"\
+            "\n\t#{msg}\n"
+          end
+          logger
+        end
       end
     end
   end

@@ -83,7 +83,7 @@ module Renderers
           )
         end
 
-        def section_output_path(template_file, course, section)
+        def section_output_path(template_file, _course, section)
           output_path(template_file).gsub(
             %r{courses/sections/section.html},
             section.link[1..-1]
@@ -99,7 +99,7 @@ module Renderers
 
         def output_path(template_file)
           shortened_path = template_file.gsub(/#{sanitize_path}/, '')
-                                        .gsub(%r{.html.erb}, '.html')
+            .gsub(/.html.erb/, '.html')
           File.join(Renderers::Website::WEBSITE_DIR, shortened_path)
         end
 

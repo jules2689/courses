@@ -47,19 +47,19 @@ module Renderers
 
     private
 
-    def partials
-      @partials ||= @template_files.each_with_object({}) do |file, partials|
-        file_name = File.basename(file, '.html.erb')
-        partials[file_name] = file
-      end
-    end
-
     def render_template(template_path, binding)
       base_layout
       output = handle_yield do
         ERB.new(File.read(template_path)).result(binding)
       end
       HtmlBeautifier.beautify(output) + "\n"
+    end
+
+    def partials
+      @partials ||= @template_files.each_with_object({}) do |file, partials|
+        file_name = File.basename(file, '.html.erb')
+        partials[file_name] = file
+      end
     end
 
     def base_layout

@@ -6,7 +6,7 @@ class CourseSection
   def initialize(course, params)
     self.title = params['title']
     self.description = params['description']
-    self.works =  params['works'].collect { |w| CourseWork.new(self, w) }
+    self.works = params['works'].collect { |w| CourseWork.new(self, w) }
     @course = course
   end
 

@@ -1,6 +1,5 @@
 require_relative 'course_section'
 require_relative 'course_category'
-require 'uri'
 
 class Course
   attr_accessor :code, :title, :description, :difficulty, :categories, :sections
