@@ -1,0 +1,16 @@
+<nav id="navbar" class="navbar navbar-static-top navbar-dark bg-inverse" role="navigation">
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">&#9776;</button>
+  <div class="collapse navbar-toggleable-xs" id="mainNavbar">
+    <a class="navbar-brand" href='/'>Courses</a>
+    <ul class="nav navbar-nav">
+      <li class="nav-item active dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">Categories</a>
+        <div class="dropdown-menu">
+          <% categories.each do |category| %>
+            <a class="dropdown-item" href="/categories/<%= category.downcase.gsub(/ /, '_') %>.html"><%= category.capitalize %></a>
+          <% end %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

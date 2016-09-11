@@ -10,6 +10,7 @@ class Website
       template_files.reject do |f|
         File.basename(f, '.html.erb').start_with?('_')
       end.each { |template_file| render_website_template(template_file) }
+      copy_assets
     end
 
     private
@@ -61,6 +62,13 @@ class Website
         %r{categories/category.html},
         "categories/#{category.downcase.gsub(/ /, '_')}.html"
       )
+    end
+
+    def copy_assets
+      assets_path = File.expand_path('../../assets', __FILE__)
+      output_path = File.expand_path('../../../docs/assets', __FILE__)
+      puts "Copying assets from #{assets_path} to #{output_path}"
+      FileUtils.cp_r(assets_path, output_path)
     end
 
     def course_output_path(template_file, course)

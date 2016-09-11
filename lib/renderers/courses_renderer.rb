@@ -63,7 +63,7 @@ class CoursesRenderer
 
   def base_layout
     @base_layout ||= begin
-      content = File.read(File.expand_path("../../views/layout.html.erb", __FILE__))
+      content = File.read(File.expand_path("../../views/layouts/layout.html.erb", __FILE__))
       erb = ERB.new(content)
       erb.def_method(CoursesRenderer, 'handle_yield')
       erb
