@@ -5,16 +5,18 @@
 </div>
 
 <div class="container">
-  <% courses.each do |course| %>
-    <div class="col-md-4 col-sm-6">
-      <div class="card">
-        <img class="card-img-top" style="width: 100%" src="https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder.png" alt="Card image cap">
-        <div class="card-block">
-          <h4 class="card-title"><%= course.title %></h4>
-          <p class="card-text"><%= course.description %></p>
-          <a href="<%= course.link %>" class="btn btn-primary" target="_blank">View this course</a>
+  <div class="cards">
+    <% courses.each do |course| %>
+      <div class="card-wrapper col-md-4 col-sm-6">
+        <div class="card">
+          <img class="card-img-top" style="width: 100%" src="https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder.png" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title"><%= course.title %></h4>
+            <p class="card-text"><%= course.description %></p>
+            <a href="<%= course.link %>" class="btn btn-primary" target="_blank">View this course</a>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

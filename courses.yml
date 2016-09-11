@@ -21,7 +21,7 @@ courses:
     difficulty: beginner
     sections:
       - 
-        title: section 1
+        title: Section 1
         description: TODO
         works:
           - 
@@ -33,7 +33,7 @@ courses:
             description: todo
             link: /
       - 
-        title: section 2
+        title: Section 2
         description: TODO
         works:
           - 
@@ -45,7 +45,7 @@ courses:
             description: todo
             link: /
       - 
-        title: section 3
+        title: Section 3
         description: TODO
         works:
           - 
@@ -57,7 +57,7 @@ courses:
             description: todo
             link: /
       - 
-        title: section 4
+        title: Section 4
         description: TODO
         works:
           - 
@@ -69,7 +69,7 @@ courses:
             description: todo
             link: /
       - 
-        title: section 5
+        title: Section 5
         description: TODO
         works:
           - 

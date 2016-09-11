@@ -12,16 +12,18 @@
     <li class="breadcrumb-item active"><%= course.title %></li>
   </ol>
 
-  <% course.sections.each do |section| %>
-    <div class="col-md-4 col-sm-6">
-      <div class="card">
-        <img class="card-img-top" style="width: 100%" src="https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder.png" alt="Card image cap">
-        <div class="card-block">
-          <h4 class="card-title"><%= section.title %></h4>
-          <p class="card-text"><%= section.description %></p>
-          <a href="<%= section.link %>" class="btn btn-primary">Start this section</a>
+  <div class="cards">
+    <% course.sections.each do |section| %>
+      <div class="card-wrapper  col-md-4 col-sm-6">
+        <div class="card">
+          <img class="card-img-top" style="width: 100%" src="https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder.png" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title"><%= section.title %></h4>
+            <p class="card-text"><%= section.description %></p>
+            <a href="<%= section.link %>" class="btn btn-primary">Start this section</a>
+          </div>
         </div>
       </div>
-    </div>
   <% end %>
+  </div>
 </div>
