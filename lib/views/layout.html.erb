@@ -29,23 +29,14 @@
       <div class="collapse navbar-toggleable-xs" id="mainNavbar">
         <a class="navbar-brand" href='/'>Courses</a>
         <ul class="nav navbar-nav">
-          <% @courses.each do |course| %>
-            <% if course.sections? %>
-              <li class="nav-item active dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><%= course.title %></a>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="<%= course.link %>">Course Overview</a>
-                  <% course.sections.each do |section| %>
-                    <a class="dropdown-item" href="<%= section.link %>"><%= section.title %></a>
-                  <% end %>
-                </div>
-              </li>
-            <% else %>
-              <li class="nav-link" %>
-                <a class="nav-link" href="<%= course.link %>"><%= course.title %></a>
-              </li>
-            <% end %>
-          <% end %>
+          <li class="nav-item active dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">Categories</a>
+            <div class="dropdown-menu">
+              <% @categories.each do |category| %>
+                <a class="dropdown-item" href="/categories/<%= category.downcase.gsub(/ /, '_') %>.html"><%= category.capitalize %></a>
+              <% end %>
+            </div>
+          </li>
         </ul>
       </div>
     </nav>

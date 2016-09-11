@@ -2,9 +2,18 @@
   <div class="card">
     <img class="card-img-top" style="width: 100%" src="https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder.png" alt="Card image cap">
     <div class="card-block">
-      <h4 class="card-title"><%= title %></h4>
-      <p class="card-text"><%= description %></p>
-      <a href="<%= link %>" class="btn btn-primary" <% if external_link %>target="_blank"<% end %>><%= link_text %></a>
+      <h4 class="card-title"><%= object.title %></h4>
+      <% if object.respond_to?(:categories) %>
+        <% object.categories.each do |category| %>
+          <a href="/categories/<%= category.downcase.gsub(/ /, '_') %>.html">
+            <span class="tag tag-default"><%= category %></span>
+          </a>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="card-block">
+      <p class="card-text"><%= object.description %></p>
+      <a href="<%= object.link %>" class="btn btn-primary" <% if external_link %>target="_blank"<% end %>><%= link_text %></a>
     </div>
   </div>
 </div>

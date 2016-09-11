@@ -15,7 +15,7 @@
 
   <div class="cards">
     <% section.works.each do |work| %>
-      <%= render_partial '_card', title: work.title, description: work.description, link: work.link, link_text: 'View this work', external_link: true %>
+      <%= render_partial '_card', object: work, link_text: 'View this work', external_link: true %>
     <% end %>
   </div>
 </div>

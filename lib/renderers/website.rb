@@ -17,6 +17,12 @@ class Website
     def render_website_template(template_file)
       base_dir = File.dirname(template_file).split('/').last
       case base_dir
+      when 'categories'
+        categories.each do |category|
+          output_path = category_output_path(template_file, category)
+          puts "Rendering category: #{category} to #{output_path}"
+          write_output(output_path, courses_renderer.render_category(category, template_file))
+        end
       when 'courses'
         courses.each do |course|
           output_path = course_output_path(template_file, course)
@@ -48,6 +54,13 @@ class Website
         next if file.end_with?('docs/CNAME')
         FileUtils.rm_rf(file, secure: true)
       end
+    end
+
+    def category_output_path(template_file, category)
+      output_path(template_file).gsub(
+        %r{categories/category.html},
+        "categories/#{category.downcase.gsub(/ /, '_')}.html"
+      )
     end
 
     def course_output_path(template_file, course)
@@ -84,7 +97,7 @@ class Website
     end
 
     def courses_renderer
-      @courses_renderer ||= CoursesRenderer.new(courses, template_files)
+      @courses_renderer ||= CoursesRenderer.new(courses, categories, template_files)
     end
 
     def courses
@@ -92,6 +105,10 @@ class Website
         course_hashes = YAML.load_file(File.expand_path('../../../courses.yml', __FILE__))
         course_hashes['courses'].collect { |h| Course.new(h) }
       end
+    end
+
+    def categories
+      @categories ||= courses.each_with_object([]) { |c, l| l << c.categories }.flatten
     end
   end
 end
