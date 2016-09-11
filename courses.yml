@@ -1,13 +1,31 @@
 categories:
-  - logic
-  - math
-  - programming
-  - software design
-  - databases
-  - operating systems
-  - artificial intelligence
-  - data
-  - computer science
+  logic: &logic
+    title: Logic
+    description: TODO
+  math: &math
+    title: Math
+    description: TODO
+  programming: &programming
+    title: Programming
+    description: TODO
+  software_design: &software_design
+    title: Software Design
+    description: TODO
+  databases: &databases
+    title: Databases
+    description: TODO
+  operating_systems: &operating_systems
+    title: Operating Systems
+    description: TODO
+  artificial_intelligence: &artificial_intelligence
+    title: Artificial Intelligence (AI)
+    description: TODO
+  data: &data
+    title: Data
+    description: TODO
+  computer_science: &computer_science
+    title: Computer Science
+    description: TODO
 
 courses:
   - 
@@ -15,9 +33,7 @@ courses:
     title: Discrete Mathematics
     pre_reqs: []
     description: TODO
-    categories:
-      - logic
-      - math
+    categories: [*logic, *math]
     difficulty: beginner
     sections:
       - 

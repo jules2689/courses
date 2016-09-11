@@ -6,8 +6,8 @@
 
 <div class="container">
   <div class="cards">
-    <% courses.each do |course| %>
-      <%= render_partial '_card', object: course, link_text: 'Start this course', external_link: false %>
+    <% @categories.each do |category| %>
+      <%= render_partial '_card', object: category, link_text: 'Start this category', external_link: false %>
     <% end %>
   </div>
 </div>

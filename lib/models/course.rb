@@ -1,4 +1,5 @@
 require_relative 'course_section'
+require_relative 'course_category'
 require 'uri'
 
 class Course
@@ -9,7 +10,7 @@ class Course
     self.title = params['title']
     self.description = params['description']
     self.difficulty = params['difficulty']
-    self.categories = params['categories']
+    self.categories = params['categories'].collect { |c| CourseCategory.new(self, c) }
     self.sections = params['sections'].collect { |s| CourseSection.new(self, s) }
   end
 

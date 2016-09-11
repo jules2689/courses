@@ -6,8 +6,8 @@
       <li class="nav-item active dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">Categories</a>
         <div class="dropdown-menu">
-          <% categories.each do |category| %>
-            <a class="dropdown-item" href="/categories/<%= category.downcase.gsub(/ /, '_') %>.html"><%= category.capitalize %></a>
+          <% @categories.each do |category| %>
+            <a class="dropdown-item" href="<%= category.link %>"><%= category.title %></a>
           <% end %>
         </div>
       </li>

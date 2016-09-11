@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/renderers/website'
-Website.render
+Renderers::Website.render

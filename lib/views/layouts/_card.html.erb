@@ -5,8 +5,8 @@
       <h4 class="card-title"><%= object.title %></h4>
       <% if object.respond_to?(:categories) %>
         <% object.categories.each do |category| %>
-          <a href="/categories/<%= category.downcase.gsub(/ /, '_') %>.html">
-            <span class="tag tag-default"><%= category %></span>
+          <a href="<%= category.link %>">
+            <span class="tag tag-default"><%= category.title %></span>
           </a>
         <% end %>
       <% end %>
