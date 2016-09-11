@@ -1,0 +1,11 @@
+<ol class="breadcrumb">
+  <% crumbs.each_with_index do |(title, link), index| %>
+    <li class="breadcrumb-item <% if index == crumbs.size - 1 %>active<% end %>">
+      <% if link %>
+        <a href="<%= link %>"><%= title %></a>
+      <% else %>
+        <span><%= title %></span>
+      <% end %>
+    </li>
+  <% end %>
+</ol>

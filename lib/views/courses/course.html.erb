@@ -7,23 +7,14 @@
 </div>
 
 <div class="container">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/">Courses</a></li>
-    <li class="breadcrumb-item active"><%= course.title %></li>
-  </ol>
+  <%= render_partial '_breadcrumbs', crumbs: {
+    "Courses" => "/",
+    course.title => nil
+  } %>
 
   <div class="cards">
     <% course.sections.each do |section| %>
-      <div class="card-wrapper  col-md-4 col-sm-6">
-        <div class="card">
-          <img class="card-img-top" style="width: 100%" src="https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder.png" alt="Card image cap">
-          <div class="card-block">
-            <h4 class="card-title"><%= section.title %></h4>
-            <p class="card-text"><%= section.description %></p>
-            <a href="<%= section.link %>" class="btn btn-primary">Start this section</a>
-          </div>
-        </div>
-      </div>
-  <% end %>
+      <%= render_partial '_card', title: section.title, description: section.description, link: section.link, link_text: 'View this section', external_link: false %>
+    <% end %>
   </div>
 </div>

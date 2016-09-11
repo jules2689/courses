@@ -7,7 +7,9 @@ class Website
   class << self
     def render
       clean_website_dir
-      template_files.each { |template_file| render_website_template(template_file) }
+      template_files.reject do |f|
+        File.basename(f, '.html.erb').start_with?('_')
+      end.each { |template_file| render_website_template(template_file) }
     end
 
     private
@@ -42,7 +44,10 @@ class Website
     end
 
     def clean_website_dir
-      FileUtils.rm_rf("#{WEBSITE_DIR}/.", secure: true)
+      Dir["#{WEBSITE_DIR}/*"].each do |file|
+        next if file.end_with?('docs/CNAME')
+        FileUtils.rm_rf(file, secure: true)
+      end
     end
 
     def course_output_path(template_file, course)
@@ -79,7 +84,7 @@ class Website
     end
 
     def courses_renderer
-      @courses_renderer ||= CoursesRenderer.new(courses)
+      @courses_renderer ||= CoursesRenderer.new(courses, template_files)
     end
 
     def courses
