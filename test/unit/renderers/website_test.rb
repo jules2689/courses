@@ -8,7 +8,7 @@ module Renderers
         cname_path = File.join(dir, 'docs', 'CNAME')
         FileUtils.touch(cname_path)
         capture_subprocess_io do
-          Renderers::Website.render
+          Renderers::Website.new(base_dir: dir).render
         end
         assert File.exist?(cname_path)
       end
@@ -17,7 +17,7 @@ module Renderers
     def test_render_renders_templates
       tmp_website_directory do |dir|
         capture_subprocess_io do
-          Renderers::Website.render
+          Renderers::Website.new(base_dir: dir).render
         end
 
         course_yml_path = File.expand_path('../../../../courses.yml', __FILE__)
@@ -30,7 +30,9 @@ module Renderers
         assert Dir.exist?(File.join(dir, 'docs', 'categories'))
         course['categories'].collect { |s| s['title'] }.each do |raw_title|
           title = raw_title.downcase.tr(' ', '_')
-          assert File.exist?(File.join(dir, 'docs', 'categories', "#{title}.html"))
+          file_path = File.join(dir, 'docs', 'categories', "#{title}.html")
+          assert File.exist?(file_path),
+            "Category template (#{file_path}) for #{title} did not exist"
         end
 
         course_dir = File.join(dir, 'docs', 'courses')
@@ -45,7 +47,9 @@ module Renderers
         assert Dir.exist?(File.join(course_dir, course_title, 'sections'))
         course['sections'].collect { |s| s['title'] }.each do |raw_title|
           title = raw_title.downcase.tr(' ', '_')
-          assert File.exist?(File.join(course_dir, course_title, 'sections', "#{title}.html"))
+          file_path = File.join(course_dir, course_title, 'sections', "#{title}.html")
+          assert File.exist?(file_path),
+            "Section template (#{file_path}) for #{title} did not exist"
         end
       end
     end
@@ -53,7 +57,7 @@ module Renderers
     def test_render_copies_assets
       tmp_website_directory do |dir|
         capture_subprocess_io do
-          Renderers::Website.render
+          Renderers::Website.new(base_dir: dir).render
         end
         assets_path = File.join(dir, 'docs', 'assets')
         assert Dir.exist?(assets_path)

@@ -3,6 +3,8 @@ $LOAD_PATH.unshift(lib_path) unless $LOAD_PATH.include?(lib_path)
 
 require 'minitest/autorun'
 require 'mocha/mini_test'
+require 'models/course'
+require 'pry'
 
 module MiniTest
   class Test
@@ -28,16 +30,12 @@ module MiniTest
     end
 
     def tmp_website_directory
-      require 'renderers/helpers/directories'
-      @dir = File.expand_path('../../tmp/test', __FILE__)
-      FileUtils.rm_rf(@dir)
-      FileUtils.mkpath(File.join(@dir, 'docs'))
-      FileUtils.cp_r(File.expand_path('../../lib/views/layouts', __FILE__), @dir)
-      Renderers::Helpers::Directories.stubs(:base).returns(@dir)
-      yield @dir
-    ensure
-      Renderers::Helpers::Directories.unstub(:base)
-      FileUtils.rm_rf(@dir)
+      Dir.mktmpdir do |dir|
+        FileUtils.rm_rf(dir)
+        FileUtils.mkpath(File.join(dir, 'docs'))
+        FileUtils.cp_r(File.expand_path('../../lib/views', __FILE__), dir)
+        yield dir
+      end
     end
 
     def data_fixture(path)
