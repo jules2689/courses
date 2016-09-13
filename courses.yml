@@ -28,71 +28,70 @@ categories:
     description: TODO
 
 courses:
-  - 
-    code: mat_dis
+  mat_dis: &mat_dis
     title: Discrete Mathematics
     pre_reqs: []
     description: TODO
     categories: [*logic, *math]
     difficulty: beginner
     sections:
-      - 
+      -
         title: Section 1
         description: TODO
         works:
-          - 
+          -
             title: work1
             description: todo
             link: /
-          - 
+          -
             title: work1
             description: todo
             link: /
-      - 
+      -
         title: Section 2
         description: TODO
         works:
-          - 
+          -
             title: work1
             description: todo
             link: /
-          - 
+          -
             title: work1
             description: todo
             link: /
-      - 
+      -
         title: Section 3
         description: TODO
         works:
-          - 
+          -
             title: work1
             description: todo
             link: /
-          - 
+          -
             title: work1
             description: todo
             link: /
-      - 
+      -
         title: Section 4
         description: TODO
         works:
-          - 
+          -
             title: work1
             description: todo
             link: /
-          - 
+          -
             title: work1
             description: todo
             link: /
-      - 
+      -
         title: Section 5
         description: TODO
         works:
-          - 
+          -
             title: work1
             description: todo
             link: /
-          - 
+          -
             title: work1
             description: todo
             link: /

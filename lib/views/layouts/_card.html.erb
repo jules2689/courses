@@ -3,6 +3,9 @@
     <img class="card-img-top" style="width: 100%" src="https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder.png" alt="Card image cap">
     <div class="card-block">
       <h4 class="card-title"><%= object.title %></h4>
+      <% if object.respond_to?(:subtitle) %>
+        <h6 class="card-subtitle text-muted"><%= object.subtitle %></h6>
+      <% end %>
       <% if object.respond_to?(:categories) %>
         <% object.categories.each do |category| %>
           <a href="<%= category.link %>">

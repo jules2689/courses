@@ -68,12 +68,21 @@ module Renderers
       def courses
         @courses ||= begin
           course_hashes = YAML.load_file(File.expand_path('../../../courses.yml', __FILE__))
-          course_hashes['courses'].collect { |h| Course.new(h) }
+          course_hashes['courses'].collect { |code, h| Course.new(h.merge(code: code)) }
         end
       end
 
       def categories
-        @categories ||= courses.each_with_object([]) { |c, l| l << c.categories }.flatten
+        @categories ||= begin
+          categories = {}
+          courses.each do |course|
+            course.categories.each do |category|
+              categories[category.title] ||= category
+              categories[category.title].courses << course
+            end
+          end
+          categories.values
+        end
       end
 
       def logger

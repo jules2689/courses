@@ -1,14 +1,22 @@
 class CourseCategory
-  attr_accessor :title, :description
+  attr_accessor :title, :description, :courses
 
-  def initialize(course, params)
+  def initialize(params)
     self.title = params['title']
     self.description = params['description']
-    @course = course
+    self.courses = []
   end
 
   def handle
     title.downcase.gsub(/\s+/, '_')
+  end
+
+  def subtitle
+    if courses.size == 1
+      "1 course"
+    else
+      "#{courses.size}"
+    end
   end
 
   def link
