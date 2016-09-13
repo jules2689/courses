@@ -9,17 +9,21 @@ module MiniTest
   class Test
     def fake_course
       category_hash = {
-        'title' => 'category_title',
+        'title' => 'category_title with spaceS',
         'description' => 'category_description',
       }
       section_hash = {
-        'title' => 'section_title',
+        'title' => 'section_title with spaceS',
         'description' => 'section_desc',
-        'works' => ['work']
+        'works' => [{
+          'title' => 'work title',
+          'description' => 'work_desc',
+          'link' => 'link'
+        }]
       }
       course_hash = {
         'code' => 'course_code',
-        'title' => 'course_title',
+        'title' => 'course_title with spaceS',
         'description' => 'course_desc',
         'difficulty' => 'course_difficulty',
         'categories' => [category_hash],

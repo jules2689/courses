@@ -22,20 +22,20 @@ module Renderers
             template_file: "#{dir}/lib/views/index.html.erb",
             type: :default
           },
-          "category-category_title" => {
-            output_path: "#{dir}/docs/categories/category_title.html",
+          "category-category_title_with_spaces" => {
+            output_path: "#{dir}/docs/categories/category_title_with_spaces.html",
             template_file: "#{dir}/lib/views/categories/category.html.erb",
             category: course.categories.first,
             type: :category
           },
-          "course-course_title" => {
-            output_path: "#{dir}/docs/courses/course_title.html",
+          "course-course_title_with_spaces" => {
+            output_path: "#{dir}/docs/courses/course_title_with_spaces.html",
             template_file: "#{dir}/lib/views/courses/course.html.erb",
             course: course,
             type: :course
           },
-          "course-course_title-section-section_title" => {
-            output_path: "#{dir}/docs/courses/course_title/sections/section_title.html",
+          "course-course_title_with_spaces-section-section_title_with_spaces" => {
+            output_path: "#{dir}/docs/courses/course_title_with_spaces/sections/section_title_with_spaces.html",
             template_file: "#{dir}/lib/views/courses/sections/section.html.erb",
             course: course,
             section: course.sections.first,

@@ -15,7 +15,7 @@ class CourseCategory
     if courses.size == 1
       "1 course"
     else
-      "#{courses.size}"
+      "#{courses.size} courses"
     end
   end
 
