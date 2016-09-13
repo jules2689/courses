@@ -1,3 +1,5 @@
+require_relative 'directories'
+
 module Renderers
   module Helpers
     class Files
@@ -100,7 +102,7 @@ module Renderers
         def output_path(template_file)
           shortened_path = template_file.gsub(/#{sanitize_path}/, '')
             .gsub(/.html.erb/, '.html')
-          File.join(Renderers::Website::WEBSITE_DIR, shortened_path)
+          File.join(Helpers::Directories.website, shortened_path)
         end
 
         def sanitize_path

@@ -1,0 +1,9 @@
+name: courses
+up:
+  - ruby: 2.3.1
+  - bundler
+
+commands:
+  render: bin/render
+  server: bin/server
+  test: bin/testunit

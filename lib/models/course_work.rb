@@ -4,7 +4,7 @@ class CourseWork
   def initialize(section, params)
     self.title = params['title']
     self.description = params['description']
-    self.link = params[:link]
+    self.link = params['link']
     @section = section
   end
 

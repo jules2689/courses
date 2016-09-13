@@ -18,15 +18,15 @@ module Renderers
       render_template(template_path, template_binding)
     end
 
-    def render_course(course, template_path)
+    def render_course(template_path, course: nil)
       render_template(template_path, template_binding(course: course))
     end
 
-    def render_section(course, section, template_path)
+    def render_section(template_path, course: nil, section: nil)
       render_template(template_path, template_binding(course: course, section: section))
     end
 
-    def render_category(category, template_path)
+    def render_category(template_path, category: nil)
       courses = @courses.select { |c| c.categories.include?(category) }
       render_template(template_path, template_binding(courses: courses, category: category))
     end

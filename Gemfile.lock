@@ -5,7 +5,11 @@ GEM
     byebug (9.0.5)
     coderay (1.1.1)
     htmlbeautifier (1.2.0)
+    metaclass (0.0.4)
     method_source (0.8.2)
+    minitest (5.9.0)
+    mocha (1.1.0)
+      metaclass (~> 0.0.1)
     parser (2.3.1.2)
       ast (~> 2.2)
     powerpack (0.1.1)
@@ -32,6 +36,8 @@ PLATFORMS
 
 DEPENDENCIES
   htmlbeautifier
+  minitest
+  mocha
   pry-byebug
   rubocop
 

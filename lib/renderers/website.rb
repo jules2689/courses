@@ -1,13 +1,11 @@
 require_relative 'courses'
 require_relative 'helpers/files'
+require_relative 'helpers/directories'
 require 'fileutils'
 require 'logger'
 
 module Renderers
   class Website
-    BASE_DIR = File.expand_path('../../../', __FILE__)
-    WEBSITE_DIR = File.join(BASE_DIR, 'docs')
-
     class << self
       def render
         clean_website_dir
@@ -18,7 +16,7 @@ module Renderers
       private
 
       def clean_website_dir
-        Dir["#{WEBSITE_DIR}/*"].each do |file|
+        Dir["#{Helpers::Directories.website}/*"].each do |file|
           next if file.end_with?('docs/CNAME')
           FileUtils.rm_rf(file, secure: true)
         end
@@ -27,15 +25,20 @@ module Renderers
       def render_website_template(template)
         return if File.basename(template[:template_file], '.html.erb').start_with?('_') # Don't render a partial
 
-        logger.info "[RENDER] #{template[:type]}: #{template[:template_file].gsub(/#{BASE_DIR}/, '')}"\
-                    " => #{template[:output_path].gsub(/#{BASE_DIR}/, '')}"
+        logger.info "[RENDER] #{template[:type]}:"\
+                    " #{template[:template_file].gsub(/#{Helpers::Directories.base}/, '')}"\
+                    " => #{template[:output_path].gsub(/#{Helpers::Directories.base}/, '')}"
         content = case template[:type]
         when :category
-          courses_renderer.render_category(template[:category], template[:template_file])
+          courses_renderer.render_category(template[:template_file], category: template[:category])
         when :course
-          courses_renderer.render_course(template[:course], template[:template_file])
+          courses_renderer.render_course(template[:template_file], course: template[:course])
         when :section
-          courses_renderer.render_section(template[:course], template[:section], template[:template_file])
+          courses_renderer.render_section(
+            template[:template_file],
+            course: template[:course],
+            section: template[:section]
+          )
         else
           courses_renderer.render(template[:template_file])
         end
@@ -49,7 +52,7 @@ module Renderers
 
       def copy_assets
         assets_path = File.expand_path('../../assets', __FILE__)
-        output_path = File.expand_path('../../../docs/assets', __FILE__)
+        output_path = File.join(Helpers::Directories.website, 'assets')
         logger.info "[ASSETS]: Copy #{assets_path} to #{output_path}"
         FileUtils.cp_r(assets_path, output_path)
       end
