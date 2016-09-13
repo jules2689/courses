@@ -1,3 +1,5 @@
+require_relative '../website'
+
 module Renderers
   module Helpers
     class Files
@@ -7,8 +9,8 @@ module Renderers
 
       def templates(categories, courses)
         @template_files ||= begin
-          base_path = File.join(@base_dir, 'views', '*.html.erb')
-          recursive_path = File.join(@base_dir, 'views', '**', '*.html.erb')
+          base_path = File.join(@base_dir, 'lib', 'views', '*.html.erb')
+          recursive_path = File.join(@base_dir, 'lib', 'views', '**', '*.html.erb')
           files = (Dir[base_path] + Dir[recursive_path])
 
           template_files = files.uniq.reject do |f|
@@ -107,7 +109,7 @@ module Renderers
       end
 
       def sanitize_path
-        File.join(@base_dir, 'views')
+        File.join(@base_dir, 'lib', 'views')
       end
     end
   end

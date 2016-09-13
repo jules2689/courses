@@ -30,9 +30,10 @@ module MiniTest
 
     def tmp_website_directory
       Dir.mktmpdir do |dir|
-        FileUtils.rm_rf(dir)
-        FileUtils.mkpath(File.join(dir, 'docs'))
-        FileUtils.cp_r(File.expand_path('../../lib/views', __FILE__), dir)
+        FileUtils.mkdir(File.join(dir, 'docs'))
+        FileUtils.mkdir(File.join(dir, 'lib'))
+        views_path = File.join(dir, 'lib', 'views')
+        FileUtils.cp_r(File.expand_path('../../lib/views', __FILE__), views_path)
         yield dir
       end
     end
