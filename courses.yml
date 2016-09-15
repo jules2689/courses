@@ -42,11 +42,11 @@ courses:
           -
             title: work1
             description: todo
-            link: /
+            link: "#"
           -
             title: work1
             description: todo
-            link: /
+            link: "#"
       -
         title: Section 2
         description: TODO
@@ -54,11 +54,11 @@ courses:
           -
             title: work1
             description: todo
-            link: /
+            link: "#"
           -
             title: work1
             description: todo
-            link: /
+            link: "#"
       -
         title: Section 3
         description: TODO
@@ -66,11 +66,11 @@ courses:
           -
             title: work1
             description: todo
-            link: /
+            link: "#"
           -
             title: work1
             description: todo
-            link: /
+            link: "#"
       -
         title: Section 4
         description: TODO
@@ -78,11 +78,11 @@ courses:
           -
             title: work1
             description: todo
-            link: /
+            link: "#"
           -
             title: work1
             description: todo
-            link: /
+            link: "#"
       -
         title: Section 5
         description: TODO
@@ -90,8 +90,8 @@ courses:
           -
             title: work1
             description: todo
-            link: /
+            link: "#"
           -
             title: work1
             description: todo
-            link: /
+            link: "#"
