@@ -16,7 +16,7 @@ module Renderers
     def render
       clean_website_dir
       @templates.each { |_, template| render_website_template(template) }
-      copy_assets
+      copy_static_files
     end
 
     private
@@ -56,11 +56,16 @@ module Renderers
       File.write(output_path, file_content)
     end
 
-    def copy_assets
+    def copy_static_files
       assets_path = File.expand_path('../../assets', __FILE__)
       output_path = File.join(@base_dir, WEBSITE_DIR, 'assets')
       logger.info "[ASSETS]: Copy #{assets_path} to #{output_path}"
       FileUtils.cp_r(assets_path, output_path)
+
+      public_path = File.expand_path('../../public', __FILE__)
+      output_path = File.join(@base_dir, WEBSITE_DIR, 'public')
+      logger.info "[PUBLIC]: Copy #{public_path} to #{output_path}"
+      FileUtils.cp_r(public_path, output_path)
     end
 
     def courses

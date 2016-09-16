@@ -1,10 +1,23 @@
 <div class="card-wrapper col-md-4 col-sm-6">
   <div class="card">
-    <img class="card-img-top" style="width: 100%" src="https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder.png" alt="Card image cap">
+
+    <% if object.image %>
+      <% if object.iframe? %>
+        <iframe src="<%= object.iframe %>" width="100%" height="300px" />
+      <% else %>
+        <a href="<%= object.link %>" <% if external_link %>target="_blank"<% end %>>
+          <img class="img-fluid" style="width: 100%;" src="<%= object.image %>" alt="<%= object.title %> image"/>
+        </a>
+      <% end %>
+    <% end %>
+
     <div class="card-block">
       <h4 class="card-title"><%= object.title %></h4>
       <% if object.respond_to?(:subtitle) %>
         <h6 class="card-subtitle text-muted"><%= object.subtitle %></h6>
+      <% end %>
+      <% if object.respond_to?(:difficulty) %>
+        <span class="tag tag-info"><%= object.difficulty.capitalize %></span>
       <% end %>
       <% if object.respond_to?(:categories) %>
         <% object.categories.each do |category| %>
@@ -14,9 +27,14 @@
         <% end %>
       <% end %>
     </div>
+
     <div class="card-block">
-      <p class="card-text"><%= object.description %></p>
-      <a href="<%= object.link %>" class="btn btn-primary" <% if external_link %>target="_blank"<% end %>><%= link_text %></a>
+      <% if object.description %>
+        <p class="card-text"><%= object.description %></p>
+      <% end %>
+      <% if object.link %>
+        <a href="<%= object.link %>" class="btn btn-primary" <% if external_link %>target="_blank"<% end %>><%= link_text %></a>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,8 +1,18 @@
 <div class="jumbotron">
   <div class="container">
-    <h1 class="display-title"><%= course.title %></h1>
-    <p><%= course.description %></p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
+    <div class="col-md-4 hidden-sm-down">
+      <img class="img-fluid img-rounded" style="width: 100%;" src="<%= course.image %>" alt="<%= course.title %> image"/>
+    </div>
+    <div class="col-md-8">
+      <h1 class="display-title"><%= course.title %></h1>
+      <span class="tag tag-info"><%= course.difficulty.capitalize %></span>
+      <% course.categories.each do |category| %>
+        <a href="<%= category.link %>">
+          <span class="tag tag-default"><%= category.title %></span>
+        </a>
+      <% end %>
+      <p><%= course.description %></p>
+    </div>
   </div>
 </div>
 

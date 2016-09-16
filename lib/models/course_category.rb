@@ -1,9 +1,10 @@
 class CourseCategory
-  attr_accessor :title, :description, :courses
+  attr_accessor :title, :description, :courses, :image
 
   def initialize(params)
     self.title = params['title']
     self.description = params['description']
+    self.image = params['image']
     self.courses = []
   end
 
@@ -21,5 +22,13 @@ class CourseCategory
 
   def link
     "/categories/#{handle}.html"
+  end
+
+  def iframe?
+    image && image.is_a?(Hash)
+  end
+
+  def iframe
+    image['iframe']
   end
 end

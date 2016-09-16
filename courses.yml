@@ -1,97 +1,132 @@
 categories:
   logic: &logic
     title: Logic
-    description: TODO
+    description: null
+    image: /assets/images/logic.png
   math: &math
     title: Math
-    description: TODO
+    description: null
+    image: /assets/images/math.jpeg
   programming: &programming
     title: Programming
-    description: TODO
+    description: null
   software_design: &software_design
     title: Software Design
-    description: TODO
+    description: null
   databases: &databases
     title: Databases
-    description: TODO
+    description: null
   operating_systems: &operating_systems
     title: Operating Systems
-    description: TODO
+    description: null
   artificial_intelligence: &artificial_intelligence
     title: Artificial Intelligence (AI)
-    description: TODO
+    description: null
   data: &data
     title: Data
-    description: TODO
+    description: null
   computer_science: &computer_science
     title: Computer Science
-    description: TODO
+    description: null
 
 courses:
   mat_dis: &mat_dis
     title: Discrete Mathematics
+    image: /assets/images/math.jpeg
     pre_reqs: []
-    description: TODO
+    description: |
+      Introduction to discrete structures as a foundation to computing. 
+      Propositional logic.
+      Fundamental structures: functions, relations, sets.
+      The basics of counting: counting arguments, the pigeonhole principle, permutations and combinations.
+      Introduction to proofs: direct, by contradiction, bycases, induction. 
+      Topics in graph theory: isomorphism, cycles, trees, directed graphs.
     categories: [*logic, *math]
     difficulty: beginner
+    texts:
+      -
+        title: Discrete Mathematics and Its Applications
+        authors: K. H. Rosen,
+        edition: 6th Edition
+        publisher: McGraw-Hill
+        link: "#"
     sections:
       -
-        title: Section 1
-        description: TODO
+        title: Propositional logic
+        image: /assets/images/math_logic.png
+        description: |
+          Propositional logic, also known as sentential logic and statement logic,
+          is the branch of logic that studies ways of joining/modifying propositions, statements or sentences
+          to form more complicated propositions, statements or sentences. It also looks at the logical relationships
+          and properties that are derived from these methods of combination and alteration.
         works:
           -
-            title: work1
-            description: todo
-            link: "#"
-          -
-            title: work1
-            description: todo
-            link: "#"
+            title: Coming Soon
+            description: Coming Soon
+            link: null
       -
-        title: Section 2
-        description: TODO
+        title: Fundamental structures
+        image: /assets/images/codomain-function.png
+        description: |
+          Functions, sets, and relations are the fundamental building blocks in mathematics.
+          Sets are collections of defined objects.
+          Relations indicate relationships between members of two sets.
+          Functions are a kind of relation where there is exisrs exactly or at most
+          one relationship for all elements in set A (a∈A) with an element in set B.
         works:
           -
-            title: work1
-            description: todo
-            link: "#"
+            title: Sets, Relations and Functions
+            image: /assets/images/intersection.png
+            description: |
+              From <a href="http://www.springer.com/cda/content/document/cda_downloaddocument/9781447145332-c1.pdf?SGWID=0-0-45-1355802-p174596963">
+              this pdf covers each topic.
+            link: /public/discrete_mathematics/fundamental_structures.pdf
           -
-            title: work1
-            description: todo
-            link: "#"
+            title: Linear Algebra/Sets, Functions, Relations (Wikibook)
+            image: /assets/images/union.png
+            description: Mathematicians work with collections called sets. A set can be given as a listing between curly braces as in...
+            link: https://en.wikibooks.org/wiki/Linear_Algebra/Sets,_Functions,_Relations
       -
-        title: Section 3
-        description: TODO
+        title: The basics of counting
+        image: /assets/images/math.jpeg
+        description: |
+          Counting has many applications in computer science and mathematics.
+          It can be used for various tasks such as counting the number of operations,
+          successes and failures in experiments, and much more. While the concept seems
+          simple enough, it is important to be able to know how many <i>combinations</i>
+          and <i>permutations</i> there are in a given number of sets, among other important
+          attributes.
         works:
           -
-            title: work1
-            description: todo
-            link: "#"
-          -
-            title: work1
-            description: todo
-            link: "#"
+            title: Counting - Discrete Mathematics - Prof. Steven Evans (Harvard)
+            description: null
+            link: http://math.harvard.edu/~ecp/teaching/Fall2013/55/chapter-6a.pdf
       -
-        title: Section 4
-        description: TODO
+        title: Introduction to Proofs
+        image: /assets/images/truth_table.gif
+        description: |
+          Covering the basics of mathematical proofs, this section will
+          cover proofs using axioms and propositions, as well as go over the
+          all important truth table. 
         works:
           -
-            title: work1
-            description: todo
-            link: "#"
-          -
-            title: work1
-            description: todo
-            link: "#"
+            title: "Lecture 1: Introduction and Proofs"
+            description: |
+              Introduction to mathematical proofs using axioms and propositions.
+              Covers basics of truth tables and implications,
+              as well as some famous hypotheses and conjectures.
+            link: http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-fall-2010/video-lectures/lecture-1-introduction-and-proofs/
       -
-        title: Section 5
-        description: TODO
+        title: Topics in graph theory
+        description: |
+          Covering the basics of graph theory, isomorphism, cycles, trees, directed graphs
+          will be some topics covered here. Each of these topics represents one area of 
+          math and computer science that is fundamental to the way systems work. Whether
+          representing a network, a real-world problem, or a virtual one - graphs and the
+          algorithms you can apply are able to accomplish a lot.
+        image: /assets/images/graph.png
         works:
           -
-            title: work1
-            description: todo
-            link: "#"
-          -
-            title: work1
-            description: todo
-            link: "#"
+            title: Coming Soon
+            description: Coming Soon
+            link: null
