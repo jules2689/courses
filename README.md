@@ -3,7 +3,8 @@
 Musings in :computer: Computer Science Education :computer:
 
 The repository is intended to gather a series of essential courses and skills into a succinct and central location.
-Each course is intended to be concise, but also explain why the skill or course is necessary.
+Each course is intended to be concise, but also explain why the skill or course is necessary. The work should usually be
+on the more practical / hands-on side, with a little theory of course.
 
 This is not intended to cover the entire set of courses at a university, but be a set of courses that can get someone started on the right track.
 
