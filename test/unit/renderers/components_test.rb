@@ -1,17 +1,17 @@
 require 'test_helper'
-require 'renderers/courses'
+require 'renderers/components'
 require 'models/course'
 require 'models/course_category'
 
 module Renderers
-  class CoursesTest < MiniTest::Test
+  class ComponentsTest < MiniTest::Test
     def setup
       super
       @course = fake_course
     end
 
     def renderer(dir)
-      Renderers::Courses.new([@course], @course.categories, Dir.glob(dir + "/**/*.html.erb"))
+      Renderers::Components.new([@course], @course.categories, Dir.glob(dir + "/**/*.html.erb"))
     end
 
     def test_render_renders_base_layout_and_template

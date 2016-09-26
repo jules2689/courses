@@ -1,4 +1,4 @@
-require_relative 'courses'
+require_relative 'components'
 require_relative 'helpers/files'
 require 'fileutils'
 require 'logger'
@@ -36,17 +36,17 @@ module Renderers
                   " => #{template[:output_path].gsub(/#{@base_dir}/, '')}"
       content = case template[:type]
       when :category
-        courses_renderer.render_category(template[:template_file], category: template[:category])
+        components_renderer.render_category(template[:template_file], category: template[:category])
       when :course
-        courses_renderer.render_course(template[:template_file], course: template[:course])
+        components_renderer.render_course(template[:template_file], course: template[:course])
       when :section
-        courses_renderer.render_section(
+        components_renderer.render_section(
           template[:template_file],
           course: template[:course],
           section: template[:section]
         )
       else
-        courses_renderer.render(template[:template_file])
+        components_renderer.render(template[:template_file])
       end
       write_output(template[:output_path], content)
     end
@@ -75,10 +75,10 @@ module Renderers
       end
     end
 
-    def courses_renderer
-      @courses_renderer ||= begin
+    def components_renderer
+      @components_renderer ||= begin
         template_files = @templates.collect { |_, t| t[:template_file] }
-        Courses.new(courses, categories, template_files)
+        Components.new(courses, categories, template_files)
       end
     end
 

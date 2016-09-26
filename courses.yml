@@ -130,3 +130,6 @@ courses:
             title: Coming Soon
             description: Coming Soon
             link: null
+
+course_sequences:
+  Computer Science: [*mat_dis]

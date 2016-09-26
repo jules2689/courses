@@ -7,7 +7,7 @@ require_relative '../models/course'
 class PartialRenderError < StandardError; end
 
 module Renderers
-  class Courses
+  class Components
     def initialize(courses, categories, template_files)
       @courses = courses
       @categories = categories
